@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block main %}
+<div class="container mt-5">
+    <h2 class="mb-4">Register</h2>
+    <form action="/register" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text" required>
+        </div>
+
+        <div class="form-group mt-3">
+            <input class="form-control" id="password" name="password" placeholder="Password" type="password" required>
+        </div>
+
+        <div class="form-group mt-3">
+            <input class="form-control" id="confirmation" name="confirmation" placeholder="Confirm Password" type="password" required>
+        </div>
+
+        <!-- Show Password Toggle -->
+        <div class="form-check mt-3 text-start">
+            <input type="checkbox" class="form-check-input" id="show-password" onclick="togglePassword()">
+            <label class="form-check-label" for="show-password">Show Password</label>
+        </div>
+
+        <button class="btn btn-primary mt-4" type="submit">Register</button>
+    </form>
+</div>
+{% endblock %}

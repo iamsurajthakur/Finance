@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}Two-Factor Authentication{% endblock %}
+
+{% block main %}
+<div class="card shadow p-4 mt-4 mx-auto" style="max-width: 500px;">
+    <h3 class="mb-3 text-center">Two-Factor Authentication (2FA)</h3>
+
+    {% if not twofa_enabled %}
+        <p class="text-muted">Add an extra layer of security to your account by enabling 2FA.</p>
+        <div class="text-center my-3">
+            <img src="{{ qr_url }}" alt="QR Code for 2FA" class="img-fluid" style="max-width: 200px;">
+            <p class="mt-2"><strong>Secret:</strong> <code>{{ otp_secret }}</code></p>
+        </div>
+        <form method="POST" action="/2fa/verify">
+            <div class="mb-3">
+                <label for="otp" class="form-label">Enter 6-digit code from your authenticator app</label>
+                <input type="text" class="form-control" id="otp" name="otp" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Enable 2FA</button>
+        </form>
+    {% else %}
+        <div class="alert alert-success text-center">
+            ✅ Two-Factor Authentication is <strong>enabled</strong> on your account.
+        </div>
+        <form method="POST" action="/2fa/disable">
+            <button type="submit" class="btn btn-danger w-100">Disable 2FA</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}

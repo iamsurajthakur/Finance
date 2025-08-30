@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <form action="/login" method="post" id="login-form">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="password" placeholder="Password" type="password">
+        </div>
+        <div class="mb-3" id="token-div" style="display: none;">
+            <input class="form-control mx-auto w-auto" name="token" placeholder="2FA Token (if enabled)" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Log In</button>
+    </form>
+
+    <script>
+        const usernameInput = document.getElementById("username");
+        const tokenDiv = document.getElementById("token-div");
+
+        usernameInput.addEventListener("blur", async () => {
+            const username = usernameInput.value.trim();
+            if (username.length === 0) return;
+
+            try {
+                const response = await fetch(`/check_2fa?username=${encodeURIComponent(username)}`);
+                const data = await response.json();
+
+                if (data.twofa) {
+                    tokenDiv.style.display = "block";
+                } else {
+                    tokenDiv.style.display = "none";
+                }
+            } catch (err) {
+                console.error("Error checking 2FA:", err);
+                tokenDiv.style.display = "none";
+            }
+        });
+    </script>
+{% endblock %}

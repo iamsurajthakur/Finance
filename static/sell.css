@@ -1,0 +1,62 @@
+
+
+    .sell-form {
+        background-color: #ffffff;
+        padding: 30px 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .sell-form h2 {
+        margin-bottom: 20px;
+        color: #333333;
+    }
+
+    label {
+        display: block;
+        margin: 15px 0 5px;
+        color: #555;
+        font-weight: 500;
+        text-align: left;
+    }
+
+    select,
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 16px;
+        margin-bottom: 20px;
+        transition: 0.3s ease;
+    }
+
+    select:focus,
+    input[type="text"]:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    }
+
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    .validator {
+        margin-top: 20px;
+    }

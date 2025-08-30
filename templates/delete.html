@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Delete Account
+{% endblock %}
+
+{% block main %}
+<h2>Delete Your Account</h2>
+<p class="text-danger">Warning: This action is irreversible. All your data will be permanently deleted.</p>
+<form action="/delete" method="post">
+    <button class="btn btn-danger" type="submit">Delete My Account</button>
+    <a href="/" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
