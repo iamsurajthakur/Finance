@@ -1,5 +1,4 @@
-/* Dark mode styles - Add this to your styles.css file */
-/* Check if dark mode is enabled and apply immediately */
+
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-color: #1a1a1a;
@@ -9,15 +8,14 @@
   }
 }
 
-/* Immediate dark mode application based on localStorage */
-/* This will be overridden by JavaScript but prevents the flash */
+
 body {
   background-color: var(--bg-color, #ffffff);
   color: var(--text-color, #212529);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Critical styles that need to load immediately */
+
 html {
   background-color: var(--bg-color, #ffffff);
 }
