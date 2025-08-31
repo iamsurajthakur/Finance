@@ -1,23 +1,224 @@
-/* Size for brand */
-nav .navbar-brand
-{
-    font-size: xx-large;
+/* Dark mode styles - Add this to your styles.css file */
+/* Check if dark mode is enabled and apply immediately */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #1a1a1a;
+    --text-color: #e9ecef;
+    --card-bg: #2d2d2d;
+    --border-color: #495057;
+  }
 }
 
-/* Colors for brand */
-nav .navbar-brand .blue
-{
-    color: #537fbe;
+/* Immediate dark mode application based on localStorage */
+/* This will be overridden by JavaScript but prevents the flash */
+body {
+  background-color: var(--bg-color, #ffffff);
+  color: var(--text-color, #212529);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-nav .navbar-brand .red
-{
-    color: #ea433b;
+
+/* Critical styles that need to load immediately */
+html {
+  background-color: var(--bg-color, #ffffff);
 }
-nav .navbar-brand .yellow
-{
-    color: #f5b82e;
+/* Light mode (default) variables */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #212529;
+  --card-bg: #ffffff;
+  --border-color: #dee2e6;
+  --input-bg: #ffffff;
+  --input-border: #ced4da;
+  --table-bg: #ffffff;
+  --table-border: #dee2e6;
+  --alert-bg: #d1ecf1;
+  --alert-border: #bee5eb;
+  --alert-text: #0c5460;
+  --placeholder-color: #6c757d; 
 }
-nav .navbar-brand .green
-{
-    color: #2e944b;
+
+/* Dark mode variables */
+.dark-mode {
+  --bg-color: #1a1a1a;
+  --text-color: #7c9abb;
+  --card-bg: #2d2d2d;
+  --border-color: #495057;
+  --input-bg: #2d2d2d;
+  --input-border: #495057;
+  --table-bg: #2d2d2d;
+  --table-border: #495057;
+  --alert-bg: #1e3a40;
+  --alert-border: #2d5a5e;
+  --alert-text: #9dd3db;
+  --placeholder-color: #adb5bd; 
+}
+
+/* Apply dark mode styles */
+.dark-mode {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+}
+
+.dark-mode main {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+.form-control::placeholder,
+.form-select::placeholder {
+  color: var(--placeholder-color) !important;
+  opacity: 1; /* ensure visible */
+}
+/* Cards and containers */
+.dark-mode .card {
+  background-color: var(--card-bg) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+
+.dark-mode .card-header {
+  background-color: var(--card-bg) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+
+/* Forms */
+.dark-mode .form-control {
+  background-color: var(--input-bg) !important;
+  border-color: var(--input-border) !important;
+  color: var(--text-color) !important;
+}
+
+.dark-mode .form-control:focus {
+  background-color: var(--input-bg) !important;
+  border-color: #80bdff !important;
+  color: var(--text-color) !important;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+}
+
+.dark-mode .form-select {
+  background-color: var(--input-bg) !important;
+  border-color: var(--input-border) !important;
+  color: var(--text-color) !important;
+}
+
+/* Labels */
+.dark-mode .form-label,
+.dark-mode label {
+  color: var(--text-color) !important;
+}
+
+/* Tables */
+.dark-mode .table {
+  --bs-table-bg: var(--table-bg);
+  --bs-table-color: var(--text-color);
+  --bs-table-border-color: var(--table-border);
+}
+
+.dark-mode .table-striped > tbody > tr:nth-of-type(odd) > td {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark-mode .table th {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+.dark-mode .table td {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Alerts */
+.dark-mode .alert {
+  background-color: var(--alert-bg) !important;
+  border-color: var(--alert-border) !important;
+  color: var(--alert-text) !important;
+}
+
+.dark-mode .alert-primary {
+  background-color: #1e3a5f !important;
+  border-color: #2d5a87 !important;
+  color: #9dd3f0 !important;
+}
+
+.dark-mode .alert-success {
+  background-color: #1e4d3a !important;
+  border-color: #2d7a5e !important;
+  color: #9dd3c7 !important;
+}
+
+.dark-mode .alert-danger {
+  background-color: #4d1e1e !important;
+  border-color: #7a2d2d !important;
+  color: #f0a3a3 !important;
+}
+
+.dark-mode .alert-warning {
+  background-color: #4d3d1e !important;
+  border-color: #7a632d !important;
+  color: #f0d3a3 !important;
+}
+
+/* Buttons - preserve original button colors but adjust for dark mode */
+.dark-mode .btn-outline-secondary {
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+.dark-mode .btn-outline-secondary:hover {
+  background-color: var(--border-color) !important;
+  color: var(--bg-color) !important;
+}
+
+/* Links */
+.dark-mode a {
+  color: #79c0ff !important;
+}
+
+.dark-mode a:hover {
+  color: #a5d1ff !important;
+}
+
+/* Dropdown menus */
+.dark-mode .dropdown-menu {
+  background-color: var(--card-bg) !important;
+  border-color: var(--border-color) !important;
+}
+
+.dark-mode .dropdown-item {
+  color: var(--text-color) !important;
+}
+
+.dark-mode .dropdown-item:hover {
+  background-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+
+/* Footer */
+.dark-mode footer {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Text colors for specific elements */
+.dark-mode .text-muted {
+  color: #6c757d !important;
+}
+
+.dark-mode .text-center {
+  color: var(--text-color) !important;
+}
+
+/* Fix for specific text elements that might not inherit color */
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode h6,
+.dark-mode p,
+.dark-mode span,
+.dark-mode div {
+  color: var(--text-color);
 }
