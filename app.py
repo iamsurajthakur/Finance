@@ -3,6 +3,7 @@ import pyotp
 import qrcode
 import io
 import base64
+import os
 
 TOTP_ENABLED = True
 
@@ -443,3 +444,7 @@ def delete_account():
         return redirect("/")
 
     return render_template("delete.html")
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
